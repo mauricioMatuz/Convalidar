@@ -28,7 +28,7 @@ tokens = (
     "IGUALIGUAL",
     "MENORIGUAL",
     "MAYORIGUAL",
-    "DOSPUNTOS",
+    "DOSPUNTOS"
 )
 
 t_IGUAL = r"="
@@ -43,6 +43,7 @@ t_RLLAVE = r"}"
 t_COMILLA = r"\""
 t_PUNTO = r"\."
 t_DOSPUNTOS = r":"
+
 
 def t_WRITE(t):
     r"write"
@@ -104,6 +105,7 @@ def t_MAYORIGUAL(t):
     r">="
     return t
 
+
 def t_IGUALIGUAL(t):
     r"=="
     return t
@@ -124,8 +126,8 @@ def t_CADENA(t):
     r'\".*?\"'
     t.value = t.value[1:-1]
     return t 
-    #r"\"?(\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *)\"?"
-    #return t
+    # r" ?(\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *)?"
+    # return t
 
 
 t_ignore = " \t\n\r"
@@ -147,7 +149,7 @@ def t_error(t):
     t.lexer.skip(1)
 
 
-def lexico(data):
+def lexicoAux(data):
     global resultado_lexema
     analizador = lex.lex()
     analizador.input(data)
@@ -157,7 +159,3 @@ def lexico(data):
         if not tok:
             break
         # print("lexema de "+tok.type+" valor "+tok.value+" linea "tok.lineno)
-        resultado_lexema.append(str(tok))
-    return resultado_lexema
-
-

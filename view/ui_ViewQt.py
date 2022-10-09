@@ -32,13 +32,20 @@ class Ui_Form(object):
         self.TxtPlainTextEdit.setFont(font)
         self.pushButton = QPushButton(Form)
         self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(110, 540, 151, 31))
+        self.pushButton.setGeometry(QRect(100, 510, 211, 31))
         self.LexplainTextEdit = QPlainTextEdit(Form)
         self.LexplainTextEdit.setObjectName(u"LexplainTextEdit")
-        self.LexplainTextEdit.setGeometry(QRect(70, 580, 281, 181))
+        self.LexplainTextEdit.setGeometry(QRect(70, 550, 281, 211))
         font1 = QFont()
         font1.setPointSize(12)
         self.LexplainTextEdit.setFont(font1)
+        self.semanticoTextEdit = QTextEdit(Form)
+        self.semanticoTextEdit.setObjectName(u"semanticoTextEdit")
+        self.semanticoTextEdit.setGeometry(QRect(520, 560, 281, 201))
+        self.semanticoTextEdit.setFont(font1)
+        self.pushButtonSemantico = QPushButton(Form)
+        self.pushButtonSemantico.setObjectName(u"pushButtonSemantico")
+        self.pushButtonSemantico.setGeometry(QRect(550, 520, 211, 31))
 
         self.retranslateUi(Form)
 
@@ -49,5 +56,6 @@ class Ui_Form(object):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.cargarPushButton.setText(QCoreApplication.translate("Form", u"CARGAR ARCHIVO", None))
         self.pushButton.setText(QCoreApplication.translate("Form", u"Lexico", None))
+        self.pushButtonSemantico.setText(QCoreApplication.translate("Form", u"Semantico", None))
     # retranslateUi
 

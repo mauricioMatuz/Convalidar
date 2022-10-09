@@ -1,0 +1,789 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMILLA
+    ELSE
+    FOR
+
+Grammar
+
+Rule 0     S' -> inicio
+Rule 1     inicio -> MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE
+Rule 2     instrucciones -> variable instrucciones
+Rule 3     instrucciones -> si instrucciones
+Rule 4     instrucciones -> imprimir instrucciones
+Rule 5     instrucciones -> empty
+Rule 6     variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+Rule 7     tipodato -> INT
+Rule 8     tipodato -> FLOAT
+Rule 9     tipodato -> STRING
+Rule 10    datos -> NUMERO
+Rule 11    datos -> NUMERO PUNTO NUMERO
+Rule 12    datos -> CADENA
+Rule 13    datos -> empty
+Rule 14    si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+Rule 15    imprimir -> WRITE DOSPUNTOS mensaje
+Rule 16    mensaje -> datosM PUNTOCOMA
+Rule 17    mensaje -> ID PUNTOCOMA
+Rule 18    mensaje -> datosM COMA mensaje
+Rule 19    mensaje -> ID COMA mensaje
+Rule 20    mensaje -> datosM COMA ID mensaje
+Rule 21    datosM -> NUMERO
+Rule 22    datosM -> NUMERO PUNTO NUMERO
+Rule 23    datosM -> CADENA
+Rule 24    evaluar -> ID comparar ID
+Rule 25    evaluar -> NUMERO comparar NUMERO
+Rule 26    evaluar -> ID comparar NUMERO
+Rule 27    evaluar -> NUMERO comparar ID
+Rule 28    comparar -> IGUALIGUAL
+Rule 29    comparar -> MENORQUE
+Rule 30    comparar -> MAYORQUE
+Rule 31    comparar -> MENORIGUAL
+Rule 32    comparar -> MAYORIGUAL
+Rule 33    empty -> <empty>
+
+Terminals, with rules where they appear
+
+CADENA               : 12 23
+COMA                 : 18 19 20
+COMILLA              : 
+DOSPUNTOS            : 15
+ELSE                 : 
+FLOAT                : 8
+FOR                  : 
+ID                   : 1 6 17 19 20 24 24 26 27
+IF                   : 14
+IGUAL                : 6
+IGUALIGUAL           : 28
+INT                  : 7
+LLLAVE               : 1 14
+LPAREN               : 1 6 14
+MAYORIGUAL           : 32
+MAYORQUE             : 30
+MENORIGUAL           : 31
+MENORQUE             : 29
+MET                  : 1
+NUMERO               : 10 11 11 21 22 22 25 25 26 27
+PUNTO                : 11 22
+PUNTOCOMA            : 6 16 17
+RLLAVE               : 1 14
+RPAREN               : 1 6 14
+STRING               : 9
+WRITE                : 15
+error                : 
+
+Nonterminals, with rules where they appear
+
+comparar             : 24 25 26 27
+datos                : 6
+datosM               : 16 18 20
+empty                : 5 13
+evaluar              : 14
+imprimir             : 4
+inicio               : 0
+instrucciones        : 1 2 3 4 14
+mensaje              : 15 18 19 20
+si                   : 3
+tipodato             : 6
+variable             : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . inicio
+    (1) inicio -> . MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE
+
+    MET             shift and go to state 2
+
+    inicio                         shift and go to state 1
+
+state 1
+
+    (0) S' -> inicio .
+
+
+
+state 2
+
+    (1) inicio -> MET . ID LPAREN RPAREN LLLAVE instrucciones RLLAVE
+
+    ID              shift and go to state 3
+
+
+state 3
+
+    (1) inicio -> MET ID . LPAREN RPAREN LLLAVE instrucciones RLLAVE
+
+    LPAREN          shift and go to state 4
+
+
+state 4
+
+    (1) inicio -> MET ID LPAREN . RPAREN LLLAVE instrucciones RLLAVE
+
+    RPAREN          shift and go to state 5
+
+
+state 5
+
+    (1) inicio -> MET ID LPAREN RPAREN . LLLAVE instrucciones RLLAVE
+
+    LLLAVE          shift and go to state 6
+
+
+state 6
+
+    (1) inicio -> MET ID LPAREN RPAREN LLLAVE . instrucciones RLLAVE
+    (2) instrucciones -> . variable instrucciones
+    (3) instrucciones -> . si instrucciones
+    (4) instrucciones -> . imprimir instrucciones
+    (5) instrucciones -> . empty
+    (6) variable -> . ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+    (14) si -> . IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (15) imprimir -> . WRITE DOSPUNTOS mensaje
+    (33) empty -> .
+
+    ID              shift and go to state 7
+    IF              shift and go to state 13
+    WRITE           shift and go to state 14
+    RLLAVE          reduce using rule 33 (empty -> .)
+
+    instrucciones                  shift and go to state 8
+    variable                       shift and go to state 9
+    si                             shift and go to state 10
+    imprimir                       shift and go to state 11
+    empty                          shift and go to state 12
+
+state 7
+
+    (6) variable -> ID . IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+
+    IGUAL           shift and go to state 15
+
+
+state 8
+
+    (1) inicio -> MET ID LPAREN RPAREN LLLAVE instrucciones . RLLAVE
+
+    RLLAVE          shift and go to state 16
+
+
+state 9
+
+    (2) instrucciones -> variable . instrucciones
+    (2) instrucciones -> . variable instrucciones
+    (3) instrucciones -> . si instrucciones
+    (4) instrucciones -> . imprimir instrucciones
+    (5) instrucciones -> . empty
+    (6) variable -> . ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+    (14) si -> . IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (15) imprimir -> . WRITE DOSPUNTOS mensaje
+    (33) empty -> .
+
+    ID              shift and go to state 7
+    IF              shift and go to state 13
+    WRITE           shift and go to state 14
+    RLLAVE          reduce using rule 33 (empty -> .)
+
+    variable                       shift and go to state 9
+    instrucciones                  shift and go to state 17
+    si                             shift and go to state 10
+    imprimir                       shift and go to state 11
+    empty                          shift and go to state 12
+
+state 10
+
+    (3) instrucciones -> si . instrucciones
+    (2) instrucciones -> . variable instrucciones
+    (3) instrucciones -> . si instrucciones
+    (4) instrucciones -> . imprimir instrucciones
+    (5) instrucciones -> . empty
+    (6) variable -> . ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+    (14) si -> . IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (15) imprimir -> . WRITE DOSPUNTOS mensaje
+    (33) empty -> .
+
+    ID              shift and go to state 7
+    IF              shift and go to state 13
+    WRITE           shift and go to state 14
+    RLLAVE          reduce using rule 33 (empty -> .)
+
+    si                             shift and go to state 10
+    instrucciones                  shift and go to state 18
+    variable                       shift and go to state 9
+    imprimir                       shift and go to state 11
+    empty                          shift and go to state 12
+
+state 11
+
+    (4) instrucciones -> imprimir . instrucciones
+    (2) instrucciones -> . variable instrucciones
+    (3) instrucciones -> . si instrucciones
+    (4) instrucciones -> . imprimir instrucciones
+    (5) instrucciones -> . empty
+    (6) variable -> . ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+    (14) si -> . IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (15) imprimir -> . WRITE DOSPUNTOS mensaje
+    (33) empty -> .
+
+    ID              shift and go to state 7
+    IF              shift and go to state 13
+    WRITE           shift and go to state 14
+    RLLAVE          reduce using rule 33 (empty -> .)
+
+    imprimir                       shift and go to state 11
+    instrucciones                  shift and go to state 19
+    variable                       shift and go to state 9
+    si                             shift and go to state 10
+    empty                          shift and go to state 12
+
+state 12
+
+    (5) instrucciones -> empty .
+
+    RLLAVE          reduce using rule 5 (instrucciones -> empty .)
+
+
+state 13
+
+    (14) si -> IF . LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+
+    LPAREN          shift and go to state 20
+
+
+state 14
+
+    (15) imprimir -> WRITE . DOSPUNTOS mensaje
+
+    DOSPUNTOS       shift and go to state 21
+
+
+state 15
+
+    (6) variable -> ID IGUAL . tipodato LPAREN datos RPAREN PUNTOCOMA
+    (7) tipodato -> . INT
+    (8) tipodato -> . FLOAT
+    (9) tipodato -> . STRING
+
+    INT             shift and go to state 23
+    FLOAT           shift and go to state 24
+    STRING          shift and go to state 25
+
+    tipodato                       shift and go to state 22
+
+state 16
+
+    (1) inicio -> MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE .
+
+    $end            reduce using rule 1 (inicio -> MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE .)
+
+
+state 17
+
+    (2) instrucciones -> variable instrucciones .
+
+    RLLAVE          reduce using rule 2 (instrucciones -> variable instrucciones .)
+
+
+state 18
+
+    (3) instrucciones -> si instrucciones .
+
+    RLLAVE          reduce using rule 3 (instrucciones -> si instrucciones .)
+
+
+state 19
+
+    (4) instrucciones -> imprimir instrucciones .
+
+    RLLAVE          reduce using rule 4 (instrucciones -> imprimir instrucciones .)
+
+
+state 20
+
+    (14) si -> IF LPAREN . evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (24) evaluar -> . ID comparar ID
+    (25) evaluar -> . NUMERO comparar NUMERO
+    (26) evaluar -> . ID comparar NUMERO
+    (27) evaluar -> . NUMERO comparar ID
+
+    ID              shift and go to state 27
+    NUMERO          shift and go to state 28
+
+    evaluar                        shift and go to state 26
+
+state 21
+
+    (15) imprimir -> WRITE DOSPUNTOS . mensaje
+    (16) mensaje -> . datosM PUNTOCOMA
+    (17) mensaje -> . ID PUNTOCOMA
+    (18) mensaje -> . datosM COMA mensaje
+    (19) mensaje -> . ID COMA mensaje
+    (20) mensaje -> . datosM COMA ID mensaje
+    (21) datosM -> . NUMERO
+    (22) datosM -> . NUMERO PUNTO NUMERO
+    (23) datosM -> . CADENA
+
+    ID              shift and go to state 31
+    NUMERO          shift and go to state 32
+    CADENA          shift and go to state 33
+
+    mensaje                        shift and go to state 29
+    datosM                         shift and go to state 30
+
+state 22
+
+    (6) variable -> ID IGUAL tipodato . LPAREN datos RPAREN PUNTOCOMA
+
+    LPAREN          shift and go to state 34
+
+
+state 23
+
+    (7) tipodato -> INT .
+
+    LPAREN          reduce using rule 7 (tipodato -> INT .)
+
+
+state 24
+
+    (8) tipodato -> FLOAT .
+
+    LPAREN          reduce using rule 8 (tipodato -> FLOAT .)
+
+
+state 25
+
+    (9) tipodato -> STRING .
+
+    LPAREN          reduce using rule 9 (tipodato -> STRING .)
+
+
+state 26
+
+    (14) si -> IF LPAREN evaluar . RPAREN LLLAVE instrucciones RLLAVE
+
+    RPAREN          shift and go to state 35
+
+
+state 27
+
+    (24) evaluar -> ID . comparar ID
+    (26) evaluar -> ID . comparar NUMERO
+    (28) comparar -> . IGUALIGUAL
+    (29) comparar -> . MENORQUE
+    (30) comparar -> . MAYORQUE
+    (31) comparar -> . MENORIGUAL
+    (32) comparar -> . MAYORIGUAL
+
+    IGUALIGUAL      shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+
+    comparar                       shift and go to state 36
+
+state 28
+
+    (25) evaluar -> NUMERO . comparar NUMERO
+    (27) evaluar -> NUMERO . comparar ID
+    (28) comparar -> . IGUALIGUAL
+    (29) comparar -> . MENORQUE
+    (30) comparar -> . MAYORQUE
+    (31) comparar -> . MENORIGUAL
+    (32) comparar -> . MAYORIGUAL
+
+    IGUALIGUAL      shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+
+    comparar                       shift and go to state 42
+
+state 29
+
+    (15) imprimir -> WRITE DOSPUNTOS mensaje .
+
+    ID              reduce using rule 15 (imprimir -> WRITE DOSPUNTOS mensaje .)
+    IF              reduce using rule 15 (imprimir -> WRITE DOSPUNTOS mensaje .)
+    WRITE           reduce using rule 15 (imprimir -> WRITE DOSPUNTOS mensaje .)
+    RLLAVE          reduce using rule 15 (imprimir -> WRITE DOSPUNTOS mensaje .)
+
+
+state 30
+
+    (16) mensaje -> datosM . PUNTOCOMA
+    (18) mensaje -> datosM . COMA mensaje
+    (20) mensaje -> datosM . COMA ID mensaje
+
+    PUNTOCOMA       shift and go to state 43
+    COMA            shift and go to state 44
+
+
+state 31
+
+    (17) mensaje -> ID . PUNTOCOMA
+    (19) mensaje -> ID . COMA mensaje
+
+    PUNTOCOMA       shift and go to state 45
+    COMA            shift and go to state 46
+
+
+state 32
+
+    (21) datosM -> NUMERO .
+    (22) datosM -> NUMERO . PUNTO NUMERO
+
+    PUNTOCOMA       reduce using rule 21 (datosM -> NUMERO .)
+    COMA            reduce using rule 21 (datosM -> NUMERO .)
+    PUNTO           shift and go to state 47
+
+
+state 33
+
+    (23) datosM -> CADENA .
+
+    PUNTOCOMA       reduce using rule 23 (datosM -> CADENA .)
+    COMA            reduce using rule 23 (datosM -> CADENA .)
+
+
+state 34
+
+    (6) variable -> ID IGUAL tipodato LPAREN . datos RPAREN PUNTOCOMA
+    (10) datos -> . NUMERO
+    (11) datos -> . NUMERO PUNTO NUMERO
+    (12) datos -> . CADENA
+    (13) datos -> . empty
+    (33) empty -> .
+
+    NUMERO          shift and go to state 49
+    CADENA          shift and go to state 50
+    RPAREN          reduce using rule 33 (empty -> .)
+
+    datos                          shift and go to state 48
+    empty                          shift and go to state 51
+
+state 35
+
+    (14) si -> IF LPAREN evaluar RPAREN . LLLAVE instrucciones RLLAVE
+
+    LLLAVE          shift and go to state 52
+
+
+state 36
+
+    (24) evaluar -> ID comparar . ID
+    (26) evaluar -> ID comparar . NUMERO
+
+    ID              shift and go to state 53
+    NUMERO          shift and go to state 54
+
+
+state 37
+
+    (28) comparar -> IGUALIGUAL .
+
+    ID              reduce using rule 28 (comparar -> IGUALIGUAL .)
+    NUMERO          reduce using rule 28 (comparar -> IGUALIGUAL .)
+
+
+state 38
+
+    (29) comparar -> MENORQUE .
+
+    ID              reduce using rule 29 (comparar -> MENORQUE .)
+    NUMERO          reduce using rule 29 (comparar -> MENORQUE .)
+
+
+state 39
+
+    (30) comparar -> MAYORQUE .
+
+    ID              reduce using rule 30 (comparar -> MAYORQUE .)
+    NUMERO          reduce using rule 30 (comparar -> MAYORQUE .)
+
+
+state 40
+
+    (31) comparar -> MENORIGUAL .
+
+    ID              reduce using rule 31 (comparar -> MENORIGUAL .)
+    NUMERO          reduce using rule 31 (comparar -> MENORIGUAL .)
+
+
+state 41
+
+    (32) comparar -> MAYORIGUAL .
+
+    ID              reduce using rule 32 (comparar -> MAYORIGUAL .)
+    NUMERO          reduce using rule 32 (comparar -> MAYORIGUAL .)
+
+
+state 42
+
+    (25) evaluar -> NUMERO comparar . NUMERO
+    (27) evaluar -> NUMERO comparar . ID
+
+    NUMERO          shift and go to state 55
+    ID              shift and go to state 56
+
+
+state 43
+
+    (16) mensaje -> datosM PUNTOCOMA .
+
+    ID              reduce using rule 16 (mensaje -> datosM PUNTOCOMA .)
+    IF              reduce using rule 16 (mensaje -> datosM PUNTOCOMA .)
+    WRITE           reduce using rule 16 (mensaje -> datosM PUNTOCOMA .)
+    RLLAVE          reduce using rule 16 (mensaje -> datosM PUNTOCOMA .)
+
+
+state 44
+
+    (18) mensaje -> datosM COMA . mensaje
+    (20) mensaje -> datosM COMA . ID mensaje
+    (16) mensaje -> . datosM PUNTOCOMA
+    (17) mensaje -> . ID PUNTOCOMA
+    (18) mensaje -> . datosM COMA mensaje
+    (19) mensaje -> . ID COMA mensaje
+    (20) mensaje -> . datosM COMA ID mensaje
+    (21) datosM -> . NUMERO
+    (22) datosM -> . NUMERO PUNTO NUMERO
+    (23) datosM -> . CADENA
+
+    ID              shift and go to state 58
+    NUMERO          shift and go to state 32
+    CADENA          shift and go to state 33
+
+    datosM                         shift and go to state 30
+    mensaje                        shift and go to state 57
+
+state 45
+
+    (17) mensaje -> ID PUNTOCOMA .
+
+    ID              reduce using rule 17 (mensaje -> ID PUNTOCOMA .)
+    IF              reduce using rule 17 (mensaje -> ID PUNTOCOMA .)
+    WRITE           reduce using rule 17 (mensaje -> ID PUNTOCOMA .)
+    RLLAVE          reduce using rule 17 (mensaje -> ID PUNTOCOMA .)
+
+
+state 46
+
+    (19) mensaje -> ID COMA . mensaje
+    (16) mensaje -> . datosM PUNTOCOMA
+    (17) mensaje -> . ID PUNTOCOMA
+    (18) mensaje -> . datosM COMA mensaje
+    (19) mensaje -> . ID COMA mensaje
+    (20) mensaje -> . datosM COMA ID mensaje
+    (21) datosM -> . NUMERO
+    (22) datosM -> . NUMERO PUNTO NUMERO
+    (23) datosM -> . CADENA
+
+    ID              shift and go to state 31
+    NUMERO          shift and go to state 32
+    CADENA          shift and go to state 33
+
+    mensaje                        shift and go to state 59
+    datosM                         shift and go to state 30
+
+state 47
+
+    (22) datosM -> NUMERO PUNTO . NUMERO
+
+    NUMERO          shift and go to state 60
+
+
+state 48
+
+    (6) variable -> ID IGUAL tipodato LPAREN datos . RPAREN PUNTOCOMA
+
+    RPAREN          shift and go to state 61
+
+
+state 49
+
+    (10) datos -> NUMERO .
+    (11) datos -> NUMERO . PUNTO NUMERO
+
+    RPAREN          reduce using rule 10 (datos -> NUMERO .)
+    PUNTO           shift and go to state 62
+
+
+state 50
+
+    (12) datos -> CADENA .
+
+    RPAREN          reduce using rule 12 (datos -> CADENA .)
+
+
+state 51
+
+    (13) datos -> empty .
+
+    RPAREN          reduce using rule 13 (datos -> empty .)
+
+
+state 52
+
+    (14) si -> IF LPAREN evaluar RPAREN LLLAVE . instrucciones RLLAVE
+    (2) instrucciones -> . variable instrucciones
+    (3) instrucciones -> . si instrucciones
+    (4) instrucciones -> . imprimir instrucciones
+    (5) instrucciones -> . empty
+    (6) variable -> . ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+    (14) si -> . IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE
+    (15) imprimir -> . WRITE DOSPUNTOS mensaje
+    (33) empty -> .
+
+    ID              shift and go to state 7
+    IF              shift and go to state 13
+    WRITE           shift and go to state 14
+    RLLAVE          reduce using rule 33 (empty -> .)
+
+    instrucciones                  shift and go to state 63
+    variable                       shift and go to state 9
+    si                             shift and go to state 10
+    imprimir                       shift and go to state 11
+    empty                          shift and go to state 12
+
+state 53
+
+    (24) evaluar -> ID comparar ID .
+
+    RPAREN          reduce using rule 24 (evaluar -> ID comparar ID .)
+
+
+state 54
+
+    (26) evaluar -> ID comparar NUMERO .
+
+    RPAREN          reduce using rule 26 (evaluar -> ID comparar NUMERO .)
+
+
+state 55
+
+    (25) evaluar -> NUMERO comparar NUMERO .
+
+    RPAREN          reduce using rule 25 (evaluar -> NUMERO comparar NUMERO .)
+
+
+state 56
+
+    (27) evaluar -> NUMERO comparar ID .
+
+    RPAREN          reduce using rule 27 (evaluar -> NUMERO comparar ID .)
+
+
+state 57
+
+    (18) mensaje -> datosM COMA mensaje .
+
+    ID              reduce using rule 18 (mensaje -> datosM COMA mensaje .)
+    IF              reduce using rule 18 (mensaje -> datosM COMA mensaje .)
+    WRITE           reduce using rule 18 (mensaje -> datosM COMA mensaje .)
+    RLLAVE          reduce using rule 18 (mensaje -> datosM COMA mensaje .)
+
+
+state 58
+
+    (20) mensaje -> datosM COMA ID . mensaje
+    (17) mensaje -> ID . PUNTOCOMA
+    (19) mensaje -> ID . COMA mensaje
+    (16) mensaje -> . datosM PUNTOCOMA
+    (17) mensaje -> . ID PUNTOCOMA
+    (18) mensaje -> . datosM COMA mensaje
+    (19) mensaje -> . ID COMA mensaje
+    (20) mensaje -> . datosM COMA ID mensaje
+    (21) datosM -> . NUMERO
+    (22) datosM -> . NUMERO PUNTO NUMERO
+    (23) datosM -> . CADENA
+
+    PUNTOCOMA       shift and go to state 45
+    COMA            shift and go to state 46
+    ID              shift and go to state 31
+    NUMERO          shift and go to state 32
+    CADENA          shift and go to state 33
+
+    datosM                         shift and go to state 30
+    mensaje                        shift and go to state 64
+
+state 59
+
+    (19) mensaje -> ID COMA mensaje .
+
+    ID              reduce using rule 19 (mensaje -> ID COMA mensaje .)
+    IF              reduce using rule 19 (mensaje -> ID COMA mensaje .)
+    WRITE           reduce using rule 19 (mensaje -> ID COMA mensaje .)
+    RLLAVE          reduce using rule 19 (mensaje -> ID COMA mensaje .)
+
+
+state 60
+
+    (22) datosM -> NUMERO PUNTO NUMERO .
+
+    PUNTOCOMA       reduce using rule 22 (datosM -> NUMERO PUNTO NUMERO .)
+    COMA            reduce using rule 22 (datosM -> NUMERO PUNTO NUMERO .)
+
+
+state 61
+
+    (6) variable -> ID IGUAL tipodato LPAREN datos RPAREN . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 65
+
+
+state 62
+
+    (11) datos -> NUMERO PUNTO . NUMERO
+
+    NUMERO          shift and go to state 66
+
+
+state 63
+
+    (14) si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones . RLLAVE
+
+    RLLAVE          shift and go to state 67
+
+
+state 64
+
+    (20) mensaje -> datosM COMA ID mensaje .
+
+    ID              reduce using rule 20 (mensaje -> datosM COMA ID mensaje .)
+    IF              reduce using rule 20 (mensaje -> datosM COMA ID mensaje .)
+    WRITE           reduce using rule 20 (mensaje -> datosM COMA ID mensaje .)
+    RLLAVE          reduce using rule 20 (mensaje -> datosM COMA ID mensaje .)
+
+
+state 65
+
+    (6) variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA .
+
+    ID              reduce using rule 6 (variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA .)
+    IF              reduce using rule 6 (variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA .)
+    WRITE           reduce using rule 6 (variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA .)
+    RLLAVE          reduce using rule 6 (variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA .)
+
+
+state 66
+
+    (11) datos -> NUMERO PUNTO NUMERO .
+
+    RPAREN          reduce using rule 11 (datos -> NUMERO PUNTO NUMERO .)
+
+
+state 67
+
+    (14) si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE .
+
+    ID              reduce using rule 14 (si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE .)
+    IF              reduce using rule 14 (si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE .)
+    WRITE           reduce using rule 14 (si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE .)
+    RLLAVE          reduce using rule 14 (si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE .)
+
