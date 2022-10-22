@@ -17,6 +17,7 @@ tokens = (
     "LPAREN",
     "RPAREN",
     "ID",
+    "DISTINTO",
     "NUMERO",
     "PUNTOCOMA",
     "MENORQUE",
@@ -29,8 +30,12 @@ tokens = (
     "MENORIGUAL",
     "MAYORIGUAL",
     "DOSPUNTOS",
+    "TO",
+    "MINUS",
+    "PLUS"
 )
-
+t_MINUS = r"-"
+t_PLUS = r"\+"
 t_IGUAL = r"="
 t_MENORQUE = r"<"
 t_MAYORQUE = r">"
@@ -44,6 +49,7 @@ t_COMILLA = r"\""
 t_PUNTO = r"\."
 t_DOSPUNTOS = r":"
 
+
 def t_WRITE(t):
     r"write"
     return t
@@ -53,6 +59,9 @@ def t_ELSE(t):
     r"else"
     return t
 
+def t_TO(t):
+    r"to"
+    return t
 
 def t_IF(t):
     r"if"
@@ -104,6 +113,7 @@ def t_MAYORIGUAL(t):
     r">="
     return t
 
+
 def t_IGUALIGUAL(t):
     r"=="
     return t
@@ -124,8 +134,8 @@ def t_CADENA(t):
     r'\".*?\"'
     t.value = t.value[1:-1]
     return t 
-    #r"\"?(\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *)\"?"
-    #return t
+    # r" ?(\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *) (\w+ \ *\w*\d* \ *)?"
+    # return t
 
 
 t_ignore = " \t\n\r"
@@ -145,7 +155,6 @@ def t_error(t):
     resultado_lexema.append("ERROR LEXICO " + str(t.value[0]))
     print(("Error Lexico: " + str(t.value[0])))
     t.lexer.skip(1)
-
 
 def lexico(data):
     global resultado_lexema

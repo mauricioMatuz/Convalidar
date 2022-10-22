@@ -17,6 +17,7 @@ tokens = (
     "LPAREN",
     "RPAREN",
     "ID",
+    "DISTINTO",
     "NUMERO",
     "PUNTOCOMA",
     "MENORQUE",
@@ -28,9 +29,13 @@ tokens = (
     "IGUALIGUAL",
     "MENORIGUAL",
     "MAYORIGUAL",
-    "DOSPUNTOS"
+    "DOSPUNTOS",
+    "TO",
+    "MINUS",
+    "PLUS"
 )
-
+t_MINUS = r"-"
+t_PLUS = r"\+"
 t_IGUAL = r"="
 t_MENORQUE = r"<"
 t_MAYORQUE = r">"
@@ -54,6 +59,9 @@ def t_ELSE(t):
     r"else"
     return t
 
+def t_TO(t):
+    r"to"
+    return t
 
 def t_IF(t):
     r"if"
