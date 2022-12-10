@@ -50,13 +50,19 @@ def p_for(p):
     """
     i = int(str(p[5]))
     x = 0
-    while x < i:
+    print("ESTO ESTA EN EL FOR",i)
+    if str(p[8]) != "None":
+        while x < i:
+            p[0] = p[8]
+            print(p[8])
+            x = x + 1
         p[0] = p[8]
-        print(p[8])
-        x = x + 1
-    p[0] = p[8]
-
-
+    else:
+        resultado_lexema.append("ERROR")
+        
+def p_instruccionesf(p):
+    """instruccionesf : imprimir instrucciones """
+    p[0] = p[1]
 
 def p_valor(p):
     """
@@ -69,12 +75,37 @@ def p_valor(p):
         p[0] = p[1]
 
 def p_variable(p):
-    """variable : ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA"""
+    """variable : ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA
+        variable :  ID IGUAL tipodatofloat LPAREN float RPAREN PUNTOCOMA
+    """
     nombre.append(str(p[1]))
     valoresVariable.append(str(p[5]))
     
     p[0] = p[1]
 
+
+def p_tipodatofloat(p):
+    """tipodatofloat : FLOAT"""
+    pass
+
+def p_float(p):
+    """
+    float : NUMERO PUNTO NUMERO
+    float : MINUS NUMERO PUNTO NUMERO
+    float : empty
+    """
+    try:
+        if str(p[1]) == "-":
+            p[0] = str(p[1]) + str(p[2]) + str(p[3]) + str(p[4])
+        else:
+            p[0] = str(p[1]) + str(p[2]) + str(p[3])
+    except LookupError:
+        if str(p[1]) == "-":
+            print("SI", str(p[1]))
+            p[0] = str(p[1]) + str(p[2])
+        else:
+            p[0] = p[1]
+    
 
 def p_tipodato(p):
     """
@@ -88,10 +119,8 @@ def p_tipodato(p):
 def p_datos(p):
     """
     datos : NUMERO
-    datos : NUMERO PUNTO NUMERO
     datos : CADENA
     datos : MINUS NUMERO
-    datos : MINUS NUMERO PUNTO NUMERO
     datos : empty
     """
     try:
@@ -129,8 +158,9 @@ def p_imprimir(p):
     imprimir : WRITE DOSPUNTOS mensaje PUNTOCOMA
     """
     p[0] = p[3]
-
-
+#! CORREGIR GRAMATICA TODO PARA QUE CONCUERDE CON EL PROGRAMA Y PASAR 
+#!VARIABLE NO DECLARADO IMPRIME :3 90
+#!INT NO DEBE ACEPTAR FLOAT CALIFICACION FINAL 70
 def p_mensaje(p):
     '''
     mensaje : datosM
@@ -145,9 +175,9 @@ def p_mensaje(p):
         elif str(p[1]) in nombre and str(p[3]) != "None":
             print("ENTRO")
             p[0] = valoresVariable[nombre.index(str(p[1]))] + str(p[3]) 
-        elif str(p[1]) != "None" and str(p[3]) in nombre:
+        elif str(p[1]) != "None" and str(p[3]) in nombre: #! otro error aqui :c ya llevamos 97 de calif
             p[0] = str(p[1]) + valoresVariable[nombre.index(str(p[3]))]
-        else:
+        else:#! NO IMPRIME SOLO EL WRITE CALIF 98 :C
             p[0] = p[1]
     elif str(p[3]) in nombre and str(p[1]) != "None":
         p[0] = str(p[1]) + valoresVariable[nombre.index(str(p[3]))]

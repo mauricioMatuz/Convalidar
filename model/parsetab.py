@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'lefLPARENRPARENLLLAVERLLAVEPUNTOleftMENORQUEMAYORQUEleftIGUALIGUALDISTINTOleftCOMACADENA COMA COMILLA DISTINTO DOSPUNTOS ELSE FLOAT FOR ID IF IGUAL IGUALIGUAL INT LLLAVE LPAREN MAYORIGUAL MAYORQUE MENORIGUAL MENORQUE MET MINUS NUMERO PLUS PUNTO PUNTOCOMA RLLAVE RPAREN STRING TO WRITEinicio : MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE\n    instrucciones : variable instrucciones\n    instrucciones : si instrucciones\n    instrucciones : imprimir instrucciones\n    instrucciones : for instrucciones\n    instrucciones : empty\n    \n    for : FOR LPAREN ID TO valor RPAREN LLLAVE instrucciones RLLAVE\n    \n    valor : NUMERO\n    valor : ID\n    variable : ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA\n    tipodato : INT\n    tipodato : FLOAT\n    tipodato : STRING\n    \n    datos : NUMERO\n    datos : NUMERO PUNTO NUMERO\n    datos : CADENA\n    datos : MINUS NUMERO\n    datos : MINUS NUMERO PUNTO NUMERO\n    datos : empty\n    \n    si : IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE else\n    \n    else : ELSE LLLAVE instrucciones RLLAVE\n    \n    imprimir : WRITE DOSPUNTOS mensaje PUNTOCOMA\n    \n    mensaje : datosM\n    mensaje : ID \n    mensaje : datosM COMA mensajerep\n    mensaje : ID COMA mensajerep\n    mensaje : datosM COMA ID mensajerep\n    \n    mensajerep : datosM\n    mensajerep : ID\n    \n    datosM : NUMERO\n    datosM : NUMERO PUNTO NUMERO\n    datosM : CADENA\n    \n    evaluar : ID comparar ID\n    evaluar : NUMERO comparar NUMERO\n    evaluar : ID comparar NUMERO\n    evaluar : NUMERO comparar ID\n    \n    comparar : IGUALIGUAL\n    comparar : MENORQUE\n    comparar : MAYORQUE\n    comparar : MENORIGUAL\n    comparar : MAYORIGUAL\n    empty :'
+_lr_signature = 'lefLPARENRPARENLLLAVERLLAVEPUNTOleftMENORQUEMAYORQUEleftIGUALIGUALDISTINTOleftCOMACADENA COMA COMILLA DISTINTO DOSPUNTOS ELSE FLOAT FOR ID IF IGUAL IGUALIGUAL INT LLLAVE LPAREN MAYORIGUAL MAYORQUE MENORIGUAL MENORQUE MET MINUS NUMERO PLUS PUNTO PUNTOCOMA RLLAVE RPAREN STRING TO WRITEinicio : MET ID LPAREN RPAREN LLLAVE instrucciones RLLAVE\n    instrucciones : variable instrucciones\n    instrucciones : si instrucciones\n    instrucciones : imprimir instrucciones\n    instrucciones : for instrucciones\n    instrucciones : empty\n    \n    for : FOR LPAREN ID TO valor RPAREN LLLAVE instrucciones RLLAVE\n    instruccionesf : imprimir instrucciones \n    valor : NUMERO\n    valor : ID\n    variable : ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA\n        variable :  ID IGUAL tipodatofloat LPAREN float RPAREN PUNTOCOMA\n    tipodatofloat : FLOAT\n    float : NUMERO PUNTO NUMERO\n    float : MINUS NUMERO PUNTO NUMERO\n    float : empty\n    \n    tipodato : INT\n    tipodato : FLOAT\n    tipodato : STRING\n    \n    datos : NUMERO\n    datos : CADENA\n    datos : MINUS NUMERO\n    datos : empty\n    \n    si : IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE else\n    \n    else : ELSE LLLAVE instrucciones RLLAVE\n    \n    imprimir : WRITE DOSPUNTOS mensaje PUNTOCOMA\n    \n    mensaje : datosM\n    mensaje : ID \n    mensaje : datosM COMA mensajerep\n    mensaje : ID COMA mensajerep\n    mensaje : datosM COMA ID mensajerep\n    \n    mensajerep : datosM\n    mensajerep : ID\n    \n    datosM : NUMERO\n    datosM : NUMERO PUNTO NUMERO\n    datosM : CADENA\n    \n    evaluar : ID comparar ID\n    evaluar : NUMERO comparar NUMERO\n    evaluar : ID comparar NUMERO\n    evaluar : NUMERO comparar ID\n    \n    comparar : IGUALIGUAL\n    comparar : MENORQUE\n    comparar : MAYORQUE\n    comparar : MENORIGUAL\n    comparar : MAYORIGUAL\n    empty :'
     
-_lr_action_items = {'MET':([0,],[2,]),'$end':([1,18,],[0,-1,]),'ID':([2,6,9,10,11,12,23,24,25,41,42,43,44,45,46,47,48,49,50,52,58,65,78,82,84,87,88,90,],[3,7,7,7,7,7,31,35,38,59,-37,-38,-39,-40,-41,62,-22,65,66,69,7,66,-10,7,-20,7,-7,-21,]),'LPAREN':([3,14,16,26,27,28,29,],[4,23,25,39,-11,-12,-13,]),'RPAREN':([4,30,39,53,54,55,57,59,60,61,62,69,70,71,74,79,83,],[5,40,-42,72,-14,-16,-19,-33,-35,-34,-36,-9,77,-8,-17,-15,-18,]),'LLLAVE':([5,40,77,85,],[6,58,82,87,]),'IF':([6,9,10,11,12,48,58,78,82,84,87,88,90,],[14,14,14,14,14,-22,14,-10,14,-20,14,-7,-21,]),'WRITE':([6,9,10,11,12,48,58,78,82,84,87,88,90,],[15,15,15,15,15,-22,15,-10,15,-20,15,-7,-21,]),'FOR':([6,9,10,11,12,48,58,78,82,84,87,88,90,],[16,16,16,16,16,-22,16,-10,16,-20,16,-7,-21,]),'RLLAVE':([6,8,9,10,11,12,13,19,20,21,22,48,58,75,78,82,84,86,87,88,89,90,],[-42,18,-42,-42,-42,-42,-6,-2,-3,-4,-5,-22,-42,81,-10,-42,-20,88,-42,-7,90,-21,]),'IGUAL':([7,],[17,]),'DOSPUNTOS':([15,],[24,]),'INT':([17,],[27,]),'FLOAT':([17,],[28,]),'STRING':([17,],[29,]),'NUMERO':([23,24,39,41,42,43,44,45,46,47,49,50,51,52,56,65,73,80,],[32,36,54,60,-37,-38,-39,-40,-41,61,36,36,68,71,74,36,79,83,]),'CADENA':([24,39,49,50,65,],[37,55,37,37,37,]),'IGUALIGUAL':([31,32,],[42,42,]),'MENORQUE':([31,32,],[43,43,]),'MAYORQUE':([31,32,],[44,44,]),'MENORIGUAL':([31,32,],[45,45,]),'MAYORIGUAL':([31,32,],[46,46,]),'PUNTOCOMA':([33,34,35,36,37,63,64,65,66,67,68,72,76,],[48,-23,-24,-30,-32,-28,-25,-29,-29,-26,-31,78,-27,]),'COMA':([34,35,36,37,68,],[49,50,-30,-32,-31,]),'PUNTO':([36,54,74,],[51,73,80,]),'TO':([38,],[52,]),'MINUS':([39,],[56,]),'ELSE':([81,],[85,]),}
+_lr_action_items = {'MET':([0,],[2,]),'$end':([1,18,],[0,-1,]),'ID':([2,6,9,10,11,12,23,24,25,43,44,45,46,47,48,49,50,51,52,54,64,71,86,87,91,93,96,97,99,],[3,7,7,7,7,7,32,36,39,65,-41,-42,-43,-44,-45,68,-26,71,72,75,7,72,-11,-12,7,-24,7,-7,-25,]),'LPAREN':([3,14,16,26,27,28,29,30,],[4,23,25,40,41,-17,-13,-19,]),'RPAREN':([4,31,40,41,55,56,57,59,60,63,65,66,67,68,75,76,77,79,88,92,],[5,42,-46,-46,78,-20,-21,-23,80,-16,-37,-39,-38,-40,-10,85,-9,-22,-14,-15,]),'LLLAVE':([5,42,85,94,],[6,64,91,96,]),'IF':([6,9,10,11,12,50,64,86,87,91,93,96,97,99,],[14,14,14,14,14,-26,14,-11,-12,14,-24,14,-7,-25,]),'WRITE':([6,9,10,11,12,50,64,86,87,91,93,96,97,99,],[15,15,15,15,15,-26,15,-11,-12,15,-24,15,-7,-25,]),'FOR':([6,9,10,11,12,50,64,86,87,91,93,96,97,99,],[16,16,16,16,16,-26,16,-11,-12,16,-24,16,-7,-25,]),'RLLAVE':([6,8,9,10,11,12,13,19,20,21,22,50,64,83,86,87,91,93,95,96,97,98,99,],[-46,18,-46,-46,-46,-46,-6,-2,-3,-4,-5,-26,-46,90,-11,-12,-46,-24,97,-46,-7,99,-25,]),'IGUAL':([7,],[17,]),'DOSPUNTOS':([15,],[24,]),'INT':([17,],[28,]),'FLOAT':([17,],[29,]),'STRING':([17,],[30,]),'NUMERO':([23,24,40,41,43,44,45,46,47,48,49,51,52,53,54,58,62,71,81,89,],[33,37,56,61,66,-41,-42,-43,-44,-45,67,37,37,74,77,79,82,37,88,92,]),'CADENA':([24,40,51,52,71,],[38,57,38,38,38,]),'IGUALIGUAL':([32,33,],[44,44,]),'MENORQUE':([32,33,],[45,45,]),'MAYORQUE':([32,33,],[46,46,]),'MENORIGUAL':([32,33,],[47,47,]),'MAYORIGUAL':([32,33,],[48,48,]),'PUNTOCOMA':([34,35,36,37,38,69,70,71,72,73,74,78,80,84,],[50,-27,-28,-34,-36,-32,-29,-33,-33,-30,-35,86,87,-31,]),'COMA':([35,36,37,38,74,],[51,52,-34,-36,-35,]),'PUNTO':([37,61,82,],[53,81,89,]),'TO':([39,],[54,]),'MINUS':([40,41,],[58,62,]),'ELSE':([90,],[94,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'inicio':([0,],[1,]),'instrucciones':([6,9,10,11,12,58,82,87,],[8,19,20,21,22,75,86,89,]),'variable':([6,9,10,11,12,58,82,87,],[9,9,9,9,9,9,9,9,]),'si':([6,9,10,11,12,58,82,87,],[10,10,10,10,10,10,10,10,]),'imprimir':([6,9,10,11,12,58,82,87,],[11,11,11,11,11,11,11,11,]),'for':([6,9,10,11,12,58,82,87,],[12,12,12,12,12,12,12,12,]),'empty':([6,9,10,11,12,39,58,82,87,],[13,13,13,13,13,57,13,13,13,]),'tipodato':([17,],[26,]),'evaluar':([23,],[30,]),'mensaje':([24,],[33,]),'datosM':([24,49,50,65,],[34,63,63,63,]),'comparar':([31,32,],[41,47,]),'datos':([39,],[53,]),'mensajerep':([49,50,65,],[64,67,76,]),'valor':([52,],[70,]),'else':([81,],[84,]),}
+_lr_goto_items = {'inicio':([0,],[1,]),'instrucciones':([6,9,10,11,12,64,91,96,],[8,19,20,21,22,83,95,98,]),'variable':([6,9,10,11,12,64,91,96,],[9,9,9,9,9,9,9,9,]),'si':([6,9,10,11,12,64,91,96,],[10,10,10,10,10,10,10,10,]),'imprimir':([6,9,10,11,12,64,91,96,],[11,11,11,11,11,11,11,11,]),'for':([6,9,10,11,12,64,91,96,],[12,12,12,12,12,12,12,12,]),'empty':([6,9,10,11,12,40,41,64,91,96,],[13,13,13,13,13,59,63,13,13,13,]),'tipodato':([17,],[26,]),'tipodatofloat':([17,],[27,]),'evaluar':([23,],[31,]),'mensaje':([24,],[34,]),'datosM':([24,51,52,71,],[35,69,69,69,]),'comparar':([32,33,],[43,49,]),'datos':([40,],[55,]),'float':([41,],[60,]),'mensajerep':([51,52,71,],[70,73,84,]),'valor':([54,],[76,]),'else':([90,],[93,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -34,39 +34,43 @@ _lr_productions = [
   ('instrucciones -> for instrucciones','instrucciones',2,'p_instrucciones','semantico.py',42),
   ('instrucciones -> empty','instrucciones',1,'p_instrucciones','semantico.py',43),
   ('for -> FOR LPAREN ID TO valor RPAREN LLLAVE instrucciones RLLAVE','for',9,'p_for','semantico.py',49),
-  ('valor -> NUMERO','valor',1,'p_valor','semantico.py',63),
-  ('valor -> ID','valor',1,'p_valor','semantico.py',64),
-  ('variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA','variable',7,'p_variable','semantico.py',72),
-  ('tipodato -> INT','tipodato',1,'p_tipodato','semantico.py',81),
-  ('tipodato -> FLOAT','tipodato',1,'p_tipodato','semantico.py',82),
-  ('tipodato -> STRING','tipodato',1,'p_tipodato','semantico.py',83),
-  ('datos -> NUMERO','datos',1,'p_datos','semantico.py',90),
-  ('datos -> NUMERO PUNTO NUMERO','datos',3,'p_datos','semantico.py',91),
-  ('datos -> CADENA','datos',1,'p_datos','semantico.py',92),
-  ('datos -> MINUS NUMERO','datos',2,'p_datos','semantico.py',93),
-  ('datos -> MINUS NUMERO PUNTO NUMERO','datos',4,'p_datos','semantico.py',94),
-  ('datos -> empty','datos',1,'p_datos','semantico.py',95),
-  ('si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE else','si',8,'p_if','semantico.py',112),
-  ('else -> ELSE LLLAVE instrucciones RLLAVE','else',4,'p_else','semantico.py',123),
-  ('imprimir -> WRITE DOSPUNTOS mensaje PUNTOCOMA','imprimir',4,'p_imprimir','semantico.py',129),
-  ('mensaje -> datosM','mensaje',1,'p_mensaje','semantico.py',136),
-  ('mensaje -> ID','mensaje',1,'p_mensaje','semantico.py',137),
-  ('mensaje -> datosM COMA mensajerep','mensaje',3,'p_mensaje','semantico.py',138),
-  ('mensaje -> ID COMA mensajerep','mensaje',3,'p_mensaje','semantico.py',139),
-  ('mensaje -> datosM COMA ID mensajerep','mensaje',4,'p_mensaje','semantico.py',140),
-  ('mensajerep -> datosM','mensajerep',1,'p_mensajerep','semantico.py',163),
-  ('mensajerep -> ID','mensajerep',1,'p_mensajerep','semantico.py',164),
-  ('datosM -> NUMERO','datosM',1,'p_datosM','semantico.py',170),
-  ('datosM -> NUMERO PUNTO NUMERO','datosM',3,'p_datosM','semantico.py',171),
-  ('datosM -> CADENA','datosM',1,'p_datosM','semantico.py',172),
-  ('evaluar -> ID comparar ID','evaluar',3,'p_evaluar','semantico.py',178),
-  ('evaluar -> NUMERO comparar NUMERO','evaluar',3,'p_evaluar','semantico.py',179),
-  ('evaluar -> ID comparar NUMERO','evaluar',3,'p_evaluar','semantico.py',180),
-  ('evaluar -> NUMERO comparar ID','evaluar',3,'p_evaluar','semantico.py',181),
-  ('comparar -> IGUALIGUAL','comparar',1,'p_comprar','semantico.py',262),
-  ('comparar -> MENORQUE','comparar',1,'p_comprar','semantico.py',263),
-  ('comparar -> MAYORQUE','comparar',1,'p_comprar','semantico.py',264),
-  ('comparar -> MENORIGUAL','comparar',1,'p_comprar','semantico.py',265),
-  ('comparar -> MAYORIGUAL','comparar',1,'p_comprar','semantico.py',266),
-  ('empty -> <empty>','empty',0,'p_empty','semantico.py',272),
+  ('instruccionesf -> imprimir instrucciones','instruccionesf',2,'p_instruccionesf','semantico.py',61),
+  ('valor -> NUMERO','valor',1,'p_valor','semantico.py',66),
+  ('valor -> ID','valor',1,'p_valor','semantico.py',67),
+  ('variable -> ID IGUAL tipodato LPAREN datos RPAREN PUNTOCOMA','variable',7,'p_variable','semantico.py',75),
+  ('variable -> ID IGUAL tipodatofloat LPAREN float RPAREN PUNTOCOMA','variable',7,'p_variable','semantico.py',76),
+  ('tipodatofloat -> FLOAT','tipodatofloat',1,'p_tipodatofloat','semantico.py',85),
+  ('float -> NUMERO PUNTO NUMERO','float',3,'p_float','semantico.py',90),
+  ('float -> MINUS NUMERO PUNTO NUMERO','float',4,'p_float','semantico.py',91),
+  ('float -> empty','float',1,'p_float','semantico.py',92),
+  ('tipodato -> INT','tipodato',1,'p_tipodato','semantico.py',109),
+  ('tipodato -> FLOAT','tipodato',1,'p_tipodato','semantico.py',110),
+  ('tipodato -> STRING','tipodato',1,'p_tipodato','semantico.py',111),
+  ('datos -> NUMERO','datos',1,'p_datos','semantico.py',118),
+  ('datos -> CADENA','datos',1,'p_datos','semantico.py',119),
+  ('datos -> MINUS NUMERO','datos',2,'p_datos','semantico.py',120),
+  ('datos -> empty','datos',1,'p_datos','semantico.py',121),
+  ('si -> IF LPAREN evaluar RPAREN LLLAVE instrucciones RLLAVE else','si',8,'p_if','semantico.py',138),
+  ('else -> ELSE LLLAVE instrucciones RLLAVE','else',4,'p_else','semantico.py',149),
+  ('imprimir -> WRITE DOSPUNTOS mensaje PUNTOCOMA','imprimir',4,'p_imprimir','semantico.py',155),
+  ('mensaje -> datosM','mensaje',1,'p_mensaje','semantico.py',163),
+  ('mensaje -> ID','mensaje',1,'p_mensaje','semantico.py',164),
+  ('mensaje -> datosM COMA mensajerep','mensaje',3,'p_mensaje','semantico.py',165),
+  ('mensaje -> ID COMA mensajerep','mensaje',3,'p_mensaje','semantico.py',166),
+  ('mensaje -> datosM COMA ID mensajerep','mensaje',4,'p_mensaje','semantico.py',167),
+  ('mensajerep -> datosM','mensajerep',1,'p_mensajerep','semantico.py',190),
+  ('mensajerep -> ID','mensajerep',1,'p_mensajerep','semantico.py',191),
+  ('datosM -> NUMERO','datosM',1,'p_datosM','semantico.py',197),
+  ('datosM -> NUMERO PUNTO NUMERO','datosM',3,'p_datosM','semantico.py',198),
+  ('datosM -> CADENA','datosM',1,'p_datosM','semantico.py',199),
+  ('evaluar -> ID comparar ID','evaluar',3,'p_evaluar','semantico.py',205),
+  ('evaluar -> NUMERO comparar NUMERO','evaluar',3,'p_evaluar','semantico.py',206),
+  ('evaluar -> ID comparar NUMERO','evaluar',3,'p_evaluar','semantico.py',207),
+  ('evaluar -> NUMERO comparar ID','evaluar',3,'p_evaluar','semantico.py',208),
+  ('comparar -> IGUALIGUAL','comparar',1,'p_comprar','semantico.py',289),
+  ('comparar -> MENORQUE','comparar',1,'p_comprar','semantico.py',290),
+  ('comparar -> MAYORQUE','comparar',1,'p_comprar','semantico.py',291),
+  ('comparar -> MENORIGUAL','comparar',1,'p_comprar','semantico.py',292),
+  ('comparar -> MAYORIGUAL','comparar',1,'p_comprar','semantico.py',293),
+  ('empty -> <empty>','empty',0,'p_empty','semantico.py',299),
 ]
